@@ -5,7 +5,11 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-cd /usr/local
+echo "Where do you want to install the chroot?"
+
+read prefix
+
+cd $prefix
 
 echo Downloading the Fedora 31 Docker Image
 
@@ -37,11 +41,11 @@ sudo rm -rf layer.tar
 
 echo Setting up internet in the chroot
 
-sudo rm -rf /usr/local/fedora/etc/resolv.conf
+sudo rm -rf $prefix/fedora/etc/resolv.conf
 
-sudo cp /etc/resolv.conf /usr/local/fedora/etc
+sudo cp /etc/resolv.conf $prefix/fedora/etc
 
-cd /usr/local/bin
+cd $prefix
 
 curl -L -o enter-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/enter-fedora
 
@@ -49,13 +53,15 @@ sudo chmod +x enter-fedora
 
 sudo chown -R root enter-fedora
 
-sudo chroot /usr/local/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh
+sudo ln -s $prefix/enter-fedora /usr/local/bin
 
-sudo chroot /usr/local/fedora chmod +x setup.sh
+sudo chroot $prefix/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh
 
-sudo chroot /usr/local/fedora bash setup.sh
+sudo chroot $prefix/fedora chmod +x setup.sh
 
-sudo rm -rf /usr/local/fedora/setup.sh
+sudo chroot $prefix/fedora bash setup.sh
+
+sudo rm -rf $prefix/fedora/setup.sh
 
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
 
