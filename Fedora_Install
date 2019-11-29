@@ -7,7 +7,7 @@ fi
 
 echo "Where do you want to install the chroot?"
 
-read -n prefix
+read prefix
 
 cd $prefix
 
