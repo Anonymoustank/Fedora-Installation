@@ -5,8 +5,6 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-exec < /dev/tty
-
 echo "Where do you want to install the chroot?"
 
 read -n prefix
