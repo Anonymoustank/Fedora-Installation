@@ -8,10 +8,10 @@ sudo dnf -y install findutils
 
 echo "Enter your new chroot username"
 
-read username
+read new_user
 
-useradd $username
+useradd $new_user
 
-sudo usermod -aG wheel $username
+sudo usermod -aG wheel $new_user
 
-passwd $username
+passwd $new_user
