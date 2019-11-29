@@ -49,5 +49,11 @@ sudo chmod +x enter-fedora
 
 sudo chown -R root enter-fedora
 
+sudo chroot /usr/local/fedora curl -L -o setup.sh https://github.com/Anonymoustank/Fedora-Installation/blob/master/setup.sh
+
+sudo chroot /usr/local/fedora chmod +x setup.sh
+
+sudo chroot /usr/local/fedora sh setup.sh
+
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
 
