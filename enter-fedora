@@ -8,12 +8,12 @@ echo "Entering Fedora chroot"
 script_name=$(basename -- "$0")
 me=`basename "$0"`
 
-mount -t proc proc /usr/local/fedora/proc
-mount -t sysfs sys /usr/local/fedora/sys
-mount -o bind /dev /usr/local/fedora/dev
-mount -o bind /dev/pts /usr/local/fedora/dev/pts
+mount -t proc proc $(pwd)/fedora/proc
+mount -t sysfs sys $(pwd)/fedora/sys
+mount -o bind /dev $(pwd)/fedora/dev
+mount -o bind /dev/pts $(pwd)/fedora/dev/pts
 
-chroot /usr/local/fedora /bin/env -i \
+chroot $(pwd)/fedora /bin/env -i \
     HOME=/root TERM="$TERM" PS1='[\u@f31chroot \W]\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/bin \
     sudo -u "#1000" /bin/bash --login
@@ -23,16 +23,16 @@ if pidof -x "$script_name" -o $$ >/dev/null;then
    echo "Not unmounting chroot because another instance is running"
    exit 1
 else
-   umount /usr/local/fedora/proc
-   umount /usr/local/fedora/sys
-   umount /usr/local/fedora/dev/pts
-   umount /usr/local/fedora/dev
-   cd /usr/local/fedora/dev
+   umount $(pwd)/fedora/proc
+   umount $(pwd)/fedora/sys
+   umount $(pwd)/fedora/dev/pts
+   umount $(pwd)/fedora/dev
+   cd $(pwd)/fedora/dev
    umount ./pts
    cd ..
    umount ./dev
-   umount -lf /usr/local/fedora/dev/pts
-   umount -lf /usr/local/fedora/dev
+   umount -lf $(pwd)/dev/pts
+   umount -lf $(pwd)/dev
    sudo pkill "enter-fedora"
 fi
 echo "Cleaned up"
