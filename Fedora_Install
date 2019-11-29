@@ -9,7 +9,9 @@ exec 0<&1
 
 echo "Where do you want to install the chroot?"
 
-read prefix
+read -n prefix
+
+exec 0<&1
 
 cd $prefix
 
