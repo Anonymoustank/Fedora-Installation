@@ -36,5 +36,13 @@ sudo rm -rf /usr/local/fedora/etc/resolv.conf
 
 sudo cp /etc/resolv.conf /usr/local/fedora/etc
 
+cd /usr/local/bin
+
+curl -L -o enter-fedora https://github.com/Anonymoustank/Fedora-Installation/blob/master/enter-fedora
+
+sudo chmod +x enter-fedora
+
+sudo chown -R root enter-fedora
+
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
 
