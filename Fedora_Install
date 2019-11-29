@@ -9,7 +9,6 @@ echo "Where do you want to install the chroot?"
 
 read -n prefix
 
-
 cd $prefix
 
 echo Downloading the Fedora 31 Docker Image
