@@ -53,7 +53,9 @@ sudo chroot /usr/local/fedora curl -L -o setup.sh https://raw.githubusercontent.
 
 sudo chroot /usr/local/fedora chmod +x setup.sh
 
-sudo chroot /usr/local/fedora sh setup.sh
+sudo chroot /usr/local/fedora bash setup.sh
+
+sudo rm -rf /usr/local/fedora/setup.sh
 
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
 
