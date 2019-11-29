@@ -1,0 +1,40 @@
+#!/bin/bash
+
+cd /usr/local
+
+echo Downloading the Fedora 31 Docker Image
+
+curl -L -o fedora.tar.xz http://fedora.mirror.constant.com/fedora/linux/releases/31/Container/x86_64/images/Fedora-Container-Base-31-1.9.x86_64.tar.xz 
+
+tar xf fedora.tar.xz
+
+echo Removing unnecessary files
+
+rm -rf 1c*
+
+rm -rf manifest.json
+
+rm -rf repositories
+
+mv ./5b* ./fedora
+
+rm -rf fedora.tar.xz
+
+cd fedora
+
+rm -rf json
+
+rm -rf VERSION
+
+tar xf layer.tar
+
+sudo rm -rf layer.tar
+
+echo Setting up internet in the chroot
+
+sudo rm -rf /usr/local/fedora/etc/resolv.conf
+
+sudo cp /etc/resolv.conf /usr/local/fedora/etc
+
+echo Fedora 31 Installed! Use enter-fedora to enter the chroot
+
