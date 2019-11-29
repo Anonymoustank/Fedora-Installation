@@ -6,6 +6,8 @@ sudo dnf -y install cracklib-dicts
 
 sudo dnf -y install findutils
 
+exec 0< /dev/tty
+
 echo "Enter your new chroot username"
 
 read new_user
