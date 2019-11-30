@@ -1,5 +1,5 @@
 #!/bin/bash
-location=/mnt/
+
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
