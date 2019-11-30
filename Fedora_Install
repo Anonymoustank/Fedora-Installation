@@ -5,6 +5,11 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+if [ "$(arch)" != "x86_64" ]
+  then echo "This script only works for x86_64 devices"
+  exit
+fi
+
 echo "Where do you want to install the chroot?"
 
 read prefix
