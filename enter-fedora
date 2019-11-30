@@ -29,9 +29,6 @@ else
    umount $location/fedora/dev/pts
    umount $location/fedora/dev
    cd $location/fedora/dev
-   umount ./pts
-   cd ..
-   umount ./dev
    umount -lf $location/dev/pts
    umount -lf $location/dev
    sudo pkill "enter-fedora"

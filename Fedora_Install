@@ -53,7 +53,7 @@ sudo chmod +x enter-fedora
 
 sudo chown -R root enter-fedora
 
-sudo sed -i "2i "$prefix"" enter-fedora
+sudo sed -i "2i "location=$prefix"" enter-fedora
 
 sudo chroot $prefix/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh
 
