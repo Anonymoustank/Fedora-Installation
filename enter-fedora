@@ -26,7 +26,9 @@ if pidof -x "$script_name" -o $$ >/dev/null;then
    exit 1
 else
    umount $location/fedora/proc
+   umount -lf $location/fedora/proc
    umount $location/fedora/sys
+   umount -lf $location/fedora/sys
    umount $location/fedora/dev/pts
    umount $location/fedora/dev
    umount -lf $location/fedora/dev/pts
