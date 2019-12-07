@@ -14,7 +14,7 @@ mount -t proc proc $location/fedora/proc
 mount -t sysfs sys $location/fedora/sys
 mount -o bind /dev $location/fedora/dev
 mount -o bind /dev/pts $location/fedora/dev/pts
-mount -o ro,bind /etc/resolv.conf $location/etc/resolv.conf
+mount -o ro,bind /etc/resolv.conf $location/fedora/etc/resolv.conf
 
 chroot $location/fedora /bin/env -i \
     HOME=/root TERM="$TERM" PS1='[\u@f31chroot \W]\$ ' \
@@ -34,7 +34,7 @@ else
    umount $location/fedora/dev
    umount -lf $location/fedora/dev/pts
    umount -lf $location/fedora/dev
-   umount -lf $location/etc/resolv.conf
+   umount -lf $location/fedora/etc/resolv.conf
    sudo pkill "enter-fedora"
 fi
 echo "Cleaned up"
