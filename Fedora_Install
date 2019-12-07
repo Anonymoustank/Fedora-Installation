@@ -50,7 +50,9 @@ echo Setting up internet in the chroot
 
 sudo rm -rf $prefix/fedora/etc/resolv.conf
 
-sudo cp /etc/resolv.conf $prefix/fedora/etc
+touch $prefix/fedora/etc/resolv.conf
+
+sudo mount -o ro,bind /etc/resolv.conf $prefix/fedora/etc/resolv.conf
 
 cd /usr/local/bin
 
@@ -69,6 +71,8 @@ sudo chroot $prefix/fedora chmod +x setup.sh
 sudo chroot $prefix/fedora bash setup.sh
 
 sudo rm -rf $prefix/fedora/setup.sh
+
+umount $prefix/fedora/etc/resolv.conf
 
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
 
