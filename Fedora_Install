@@ -22,6 +22,8 @@ curl -L -o fedora.tar.xz http://fedora.mirror.constant.com/fedora/linux/releases
 
 tar xf fedora.tar.xz
 
+echo Extracting tarball
+
 echo Removing unnecessary files
 
 rm -rf 1c*
