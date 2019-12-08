@@ -58,11 +58,15 @@ cd /usr/local/bin
 
 curl -L -o enter-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/enter-fedora
 
+curl -L -o unmount-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/unmount-fedora
+
 sudo chmod +x enter-fedora
 
-sudo chown -R root enter-fedora
+sudo chmod +x unmount-fedora
 
 sudo sed -i "2i "location=$prefix"" enter-fedora
+
+sudo sed -i "2i "location=$prefix"" unmount-fedora
 
 sudo chroot $prefix/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh
 
