@@ -26,16 +26,6 @@ if pidof -x "$script_name" -o $$ >/dev/null;then
    echo "Not unmounting chroot because another instance is running"
    exit 1
 else
-   umount $location/fedora/proc
-   umount $location/fedora/etc/resolv.conf
-   umount -lf $location/fedora/proc
-   umount $location/fedora/sys
-   umount -lf $location/fedora/sys
-   umount $location/fedora/dev/pts
-   umount $location/fedora/dev
-   umount -lf $location/fedora/dev/pts
-   umount -lf $location/fedora/dev
-   umount -lf $location/fedora/etc/resolv.conf
-   sudo pkill "enter-fedora"
+unmount-fedora
 fi
 echo "Cleaned up"
