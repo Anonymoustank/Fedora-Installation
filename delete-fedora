@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+unmount-fedora
+rm -rf $location/fedora
+rm -rf /usr/local/bin/enter-fedora
+rm -rf /usr/local/bin/unmount-fedora
+rm -rf /usr/local/bin/delete-fedora
+
+echo Deleted the Fedora 31 Chroot
