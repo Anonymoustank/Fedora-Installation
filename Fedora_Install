@@ -20,9 +20,9 @@ echo Downloading the Fedora 31 Docker Image
 
 curl -L -o fedora.tar.xz http://fedora.mirror.constant.com/fedora/linux/releases/31/Container/x86_64/images/Fedora-Container-Base-31-1.9.x86_64.tar.xz 
 
-tar xf fedora.tar.xz
-
 echo Extracting tarball
+
+tar xf fedora.tar.xz
 
 echo Removing unnecessary files
 
@@ -60,6 +60,10 @@ curl -L -o enter-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-I
 
 curl -L -o unmount-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/unmount-fedora
 
+curl -L -o delete-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/delete-fedora
+
+sudo chmod +x delete-fedora
+
 sudo chmod +x enter-fedora
 
 sudo chmod +x unmount-fedora
@@ -67,6 +71,8 @@ sudo chmod +x unmount-fedora
 sudo sed -i "2i "location=$prefix"" enter-fedora
 
 sudo sed -i "2i "location=$prefix"" unmount-fedora
+
+sed -i "2i "location=$prefix"" delete-fedora
 
 sudo chroot $prefix/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh
 
@@ -79,4 +85,5 @@ sudo rm -rf $prefix/fedora/setup.sh
 umount $prefix/fedora/etc/resolv.conf
 
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
+echo Use delete-fedora to delete the chroot
 
