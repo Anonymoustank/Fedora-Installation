@@ -1,6 +1,5 @@
 #!/bin/bash
 
-location=/usr/local
 
 
 if [ "$EUID" -ne 0 ]
