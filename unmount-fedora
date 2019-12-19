@@ -1,19 +1,38 @@
 #!/bin/bash
 
+location=/usr/local
+
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit
 fi
 
+
+
+function check_unmount {
+  if [ "$(mountpoint $location/fedora/$1)" == "$location/fedora/$1 is a mountpoint" ]; then
+  umount -lf $location/fedora/$1
+fi
+}
+
+
 umount $location/fedora/proc
 umount $location/fedora/etc/resolv.conf
-umount -lf $location/fedora/proc
+
+check_unmount /proc
+
 umount $location/fedora/sys
-umount -lf $location/fedora/sys
+
+check_unmount /sys
+
 umount $location/fedora/dev/pts
+
+check_unmount /dev/pts
+
 umount $location/fedora/dev
-umount -lf $location/fedora/dev/pts
-umount -lf $location/fedora/dev
-umount -lf $location/fedora/etc/resolv.conf
+
+check_unmount /dev
+
+check_unmount /etc/resolv.conf
 sudo pkill "enter-fedora"
