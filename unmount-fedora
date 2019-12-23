@@ -11,27 +11,27 @@ fi
 
 function check_unmount {
   if [ "$(mountpoint $location/fedora/$1)" == "$location/fedora/$1 is a mountpoint" ]; then
-  umount -lf $location/fedora/$1
+  umount -lf $location/fedora/$1 2>/dev/null
 fi
 }
 
 
-umount $location/fedora/proc
-umount $location/fedora/etc/resolv.conf
+umount $location/fedora/proc 2>/dev/null
+umount $location/fedora/etc/resolv.conf 2>/dev/null
 
-check_unmount /proc
+check_unmount /proc 2>/dev/null
 
-umount $location/fedora/sys
+umount $location/fedora/sys 2>/dev/null
 
-check_unmount /sys
+check_unmount /sys 2>/dev/null
 
-umount $location/fedora/dev/pts
+umount $location/fedora/dev/pts 2>/dev/null
 
-check_unmount /dev/pts
+check_unmount /dev/pts 2>/dev/null
 
-umount $location/fedora/dev
+umount $location/fedora/dev 2>/dev/null
 
-check_unmount /dev
+check_unmount /dev 2>/dev/null
 
-check_unmount /etc/resolv.conf
-sudo pkill "enter-fedora"
+check_unmount /etc/resolv.conf 2>/dev/null
+sudo pkill "enter-fedora" 2>/dev/null
