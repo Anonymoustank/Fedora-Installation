@@ -56,11 +56,13 @@ sudo mount -o ro,bind /etc/resolv.conf $prefix/fedora/etc/resolv.conf
 
 cd /usr/local/bin
 
-curl -L -o enter-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/enter-fedora
+echo Downloading additional scripts to /usr/local/bin
 
-curl -L -o unmount-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/unmount-fedora
+curl -L -o enter-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/enter-fedora 2>/dev/null
 
-curl -L -o delete-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/delete-fedora
+curl -L -o unmount-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/unmount-fedora 2>/dev/null
+
+curl -L -o delete-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/delete-fedora 2>/dev/null
 
 sudo chmod +x delete-fedora
 
@@ -85,5 +87,6 @@ sudo rm -rf $prefix/fedora/setup.sh
 umount $prefix/fedora/etc/resolv.conf
 
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
+
 echo Use delete-fedora to delete the chroot
 
