@@ -76,7 +76,7 @@ sudo sed -i "2i "location=$prefix"" unmount-fedora
 
 sed -i "2i "location=$prefix"" delete-fedora
 
-sudo chroot $prefix/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh 2>/dev/null
+sudo chroot $prefix/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh
 
 sudo chroot $prefix/fedora chmod +x setup.sh
 
