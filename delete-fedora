@@ -6,7 +6,10 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-unmount-fedora
+Unmounting the chroot...
+unmount-fedora 2>/dev/null
+
+echo Deleting the chroot...
 rm -rf $location/fedora
 rm -rf /usr/local/bin/enter-fedora
 rm -rf /usr/local/bin/unmount-fedora
