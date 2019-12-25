@@ -8,9 +8,7 @@ sudo dnf -y install findutils
 
 exec 0<&1
 
-echo "Enter your new chroot username"
-
-read new_user
+read -p 'Enter your chroot username: ' new_user
 
 useradd $new_user
 
