@@ -56,7 +56,7 @@ sudo mount -o ro,bind /etc/resolv.conf $prefix/fedora/etc/resolv.conf
 
 cd /usr/local/bin
 
-echo Downloading additional scripts to /usr/local/bin
+echo Installing additional scripts to /usr/local/bin
 
 curl -L -o enter-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/enter-fedora 2>/dev/null
 
