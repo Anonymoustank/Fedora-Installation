@@ -10,9 +10,9 @@ if [ "$(arch)" != "x86_64" ]
   exit
 fi
 
-echo "Where do you want to install the chroot?"
+read -p 'Where do you want to install the chroot? ' prefix
 
-read prefix
+mkdir $prefix 2>/dev/null
 
 cd $prefix
 
