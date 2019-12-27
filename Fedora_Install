@@ -18,7 +18,7 @@ cd $prefix
 
 echo Downloading the Fedora 31 Docker Image
 
-curl -L -o fedora.tar.xz http://fedora.mirror.constant.com/fedora/linux/releases/31/Container/x86_64/images/Fedora-Container-Base-31-1.9.x86_64.tar.xz 
+curl -# -L -o fedora.tar.xz http://fedora.mirror.constant.com/fedora/linux/releases/31/Container/x86_64/images/Fedora-Container-Base-31-1.9.x86_64.tar.xz 
 
 echo Extracting tarball
 
@@ -44,15 +44,15 @@ rm -rf VERSION
 
 tar xf layer.tar
 
-sudo rm -rf layer.tar
+rm -rf layer.tar
 
 echo Setting up internet in the chroot
 
-sudo rm -rf $prefix/fedora/etc/resolv.conf
+rm -rf $prefix/fedora/etc/resolv.conf
 
 touch $prefix/fedora/etc/resolv.conf
 
-sudo mount -o ro,bind /etc/resolv.conf $prefix/fedora/etc/resolv.conf
+mount -o ro,bind /etc/resolv.conf $prefix/fedora/etc/resolv.conf
 
 cd /usr/local/bin
 
@@ -64,25 +64,29 @@ curl -L -o unmount-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora
 
 curl -L -o delete-fedora https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/delete-fedora 2>/dev/null
 
-sudo chmod +x delete-fedora
+chmod +x delete-fedora
 
-sudo chmod +x enter-fedora
+chmod +x enter-fedora
 
-sudo chmod +x unmount-fedora
+chmod +x unmount-fedora
 
-sudo sed -i "2i "location=$prefix"" enter-fedora
+sed -i "2i "location=$prefix"" enter-fedora
 
-sudo sed -i "2i "location=$prefix"" unmount-fedora
+sed -i "2i "location=$prefix"" unmount-fedora
 
 sed -i "2i "location=$prefix"" delete-fedora
 
-sudo chroot $prefix/fedora curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh
+cd $prefix/fedora
 
-sudo chroot $prefix/fedora chmod +x setup.sh
+curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Installation/master/setup.sh 2>/dev/null
 
-sudo chroot $prefix/fedora bash setup.sh
+cd /usr/local/bin
 
-sudo rm -rf $prefix/fedora/setup.sh
+chroot $prefix/fedora chmod +x setup.sh
+
+chroot $prefix/fedora bash setup.sh
+
+rm -rf $prefix/fedora/setup.sh
 
 umount $prefix/fedora/etc/resolv.conf
 
