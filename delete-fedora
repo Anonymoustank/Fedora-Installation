@@ -6,7 +6,18 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-echo Unmounting the chroot...
+
+read -p 'Are you sure you want to delete the chroot (y/N)? ' answer
+
+
+if [ "$answer" == "Y" ] ;then
+    echo Unmounting the chroot...
+elif [ "$answer" == "y" ] ;then
+    echo Unmounting the chroot...
+else
+    echo No
+fi
+
 unmount-fedora 2>/dev/null
 
 echo Deleting the chroot...
