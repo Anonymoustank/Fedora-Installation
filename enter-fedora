@@ -17,7 +17,7 @@ mount -o bind /dev/pts $location/fedora/dev/pts
 mount -o ro,bind /etc/resolv.conf $location/fedora/etc/resolv.conf
 
 chroot $location/fedora /bin/env -i \
-    HOME=/root TERM="$TERM" PS1='[\u@f31chroot \W]\$ ' \
+    HOME=/root TERM="$TERM" PS1='[\u@localhost \W]\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/bin \
     sudo -u "#1000" /bin/bash --login
 echo "Exiting Fedora chroot"
