@@ -5,12 +5,13 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Anonymoustank/Fedor
 
 
 Requirements:
-x86_64 system
 
-400 mb of free space minimum
+- x86_64 system
 
-curl
+- 400 mb of free space minimum
 
-tar
+- curl
 
-root privileges
+- tar
+
+ - root privileges
