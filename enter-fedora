@@ -8,7 +8,7 @@ fi
 echo "Entering Fedora chroot"
 
 if [ "$(mountpoint $location/fedora)" == "$location/fedora is a mountpoint" ]
-  then echo "it worked"  
+  then echo it worked 2>/dev/null  
 else
   mount --bind $location/fedora $location/fedora
   mount -o remount,exec $location/fedora
