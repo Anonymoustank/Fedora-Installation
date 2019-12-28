@@ -7,6 +7,13 @@ if [ "$EUID" -ne 0 ]
 fi
 echo "Entering Fedora chroot"
 
+if [ "$(mountpoint $location/fedora)" == "$location/fedora is a mountpoint" ]
+  then echo "it worked"  
+else
+  mount --bind $location/fedora $location/fedora
+  mount -o remount,bind $location/fedora
+fi
+
 script_name=$(basename -- "$0")
 me=`basename "$0"`
 
