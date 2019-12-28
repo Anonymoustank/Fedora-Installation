@@ -35,4 +35,8 @@ check_unmount /dev 2>/dev/null
 
 check_unmount /etc/resolv.conf 2>/dev/null
 
+umount $location/fedora 2>/dev/null
+
+check_unmount / 2>/dev/null
+
 pkill "enter-fedora" 2>/dev/null
