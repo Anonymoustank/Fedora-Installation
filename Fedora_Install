@@ -54,7 +54,7 @@ touch $prefix/fedora/etc/resolv.conf
 
 mount --bind $prefix/fedora $prefix/fedora
 
-mount -o remount,exec $prefix/fedora
+mount -o remount,exec,suid $prefix/fedora
 
 mount -o ro,bind /etc/resolv.conf $prefix/fedora/etc/resolv.conf
 
