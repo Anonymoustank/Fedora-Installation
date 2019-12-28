@@ -82,7 +82,7 @@ curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Insta
 
 cd /usr/local/bin
 
-mount --bind $prefix/fedora $prefix/fedora 2>/dev/null
+mount --bind $prefix/fedora $prefix/fedora
 
 mount -o remount,exec $prefix/fedora
 
