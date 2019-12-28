@@ -82,6 +82,10 @@ curl -L -o setup.sh https://raw.githubusercontent.com/Anonymoustank/Fedora-Insta
 
 cd /usr/local/bin
 
+mount --bind $prefix/fedora $prefix/fedora 2>/dev/null
+
+mount -o remount,exec $prefix/fedora
+
 chroot $prefix/fedora chmod +x setup.sh
 
 chroot $prefix/fedora bash setup.sh
@@ -89,6 +93,10 @@ chroot $prefix/fedora bash setup.sh
 rm -rf $prefix/fedora/setup.sh
 
 umount $prefix/fedora/etc/resolv.conf
+
+umount $prefix/fedora
+
+umount -lf $prefix/fedora 2>/dev/null
 
 echo Fedora 31 Installed! Use enter-fedora to enter the chroot
 
