@@ -1,12 +1,6 @@
 #!/bin/bash
 
-dnf -y install passwd
-
-dnf -y install cracklib-dicts
-
-dnf -y install findutils
-
-exec 0<&1
+dnf -y install passwd cracklib-dicts findutils
 
 read -p 'Enter your chroot username: ' new_user
 
