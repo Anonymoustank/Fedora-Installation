@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#This code is based off of the code from this website: https://nmilosev.svbtle.com/quick-and-easy-fedora-minimal-chroot
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
@@ -8,11 +9,11 @@ fi
 
 
 if [ "$(mountpoint $location/fedora)" == "$location/fedora is a mountpoint" ]
-  then echo "Entering Fedora chroot" 
+  then echo "Entering chroot" 
 else
   mount --bind $location/fedora $location/fedora
   mount -o remount,exec,suid $location/fedora
-  echo "Entering Fedora chroot"
+  echo "Entering chroot"
 fi
 
 script_name=$(basename -- "$0")
