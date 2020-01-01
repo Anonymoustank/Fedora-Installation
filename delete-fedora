@@ -15,7 +15,8 @@ if [ "$answer" == "Y" ] ;then
 elif [ "$answer" == "y" ] ;then
     echo Unmounting the chroot...
 else
-    echo No
+    echo Not deleting the chroot
+    exit
 fi
 
 unmount-fedora 2>/dev/null
