@@ -12,7 +12,7 @@ fi
 
 read -p 'Where do you want to install the chroot? ' prefix
 
-mkdir $prefix 2>/dev/null
+mkdir -p $prefix 2>/dev/null
 
 cd $prefix
 
