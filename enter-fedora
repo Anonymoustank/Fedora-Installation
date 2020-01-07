@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/bash -e
 
-#This code is based off of the code from this website: https://nmilosev.svbtle.com/quick-and-easy-fedora-minimal-chroot
+#This script is based off the code from this website: https://nmilosev.svbtle.com/quick-and-easy-fedora-minimal-chroot
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
