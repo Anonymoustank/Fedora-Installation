@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 dnf -y install passwd cracklib-dicts findutils
 
