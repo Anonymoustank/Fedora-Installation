@@ -12,7 +12,7 @@ if [ "$(mountpoint $location/fedora)" == "$location/fedora is a mountpoint" ]
   then echo "Entering chroot" 
 else
   mount --bind $location/fedora $location/fedora
-  mount -o remount,exec,suid $location/fedora
+  mount -o remount,exec,suid,dev $location/fedora
   echo "Entering chroot"
 fi
 
