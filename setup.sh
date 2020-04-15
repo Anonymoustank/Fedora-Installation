@@ -2,7 +2,7 @@
 
 dnf -y update
 
-dnf -y install passwd cracklib-dicts findutils
+dnf -y install passwd cracklib-dicts findutils glibc-langpack-en
 
 read -p 'Enter your chroot username: ' new_user
 
