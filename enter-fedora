@@ -8,19 +8,19 @@ if [ "$EUID" -ne 0 ]
 fi
 
 
-if [ "$(mountpoint $location/fedora)" == "$location/fedora is a mountpoint" ]
-  then echo "Entering chroot" 
-else
-  mount --bind $location/fedora $location/fedora
+if [ "$(mountpoint $location/fedora)" != "$location/fedora is a mountpoint" ]
+  then mount --bind $location/fedora $location/fedora
   mount -o remount,exec,suid,dev $location/fedora
+  mount -t proc proc $location/fedora/proc 2>/dev/null
+  mount -t sysfs sys $location/fedora/sys 2>/dev/null
   echo "Entering chroot"
+  
 fi
 
 script_name=$(basename -- "$0")
 me=`basename "$0"`
 
-mount -t proc proc $location/fedora/proc 2>/dev/null
-mount -t sysfs sys $location/fedora/sys 2>/dev/null
+
 mount -o bind /dev $location/fedora/dev
 mount -o bind /dev/pts $location/fedora/dev/pts
 mount -o ro,bind /etc/resolv.conf $location/fedora/etc/resolv.conf
@@ -38,7 +38,7 @@ if pidof -x "$script_name" -o $$ >/dev/null;then
    umount $location/fedora/etc/resolv.conf
    exit
 else
-unmount-fedora
-exit
+  unmount-fedora
+  exit
 fi
 
