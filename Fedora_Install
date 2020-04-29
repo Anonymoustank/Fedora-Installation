@@ -18,7 +18,7 @@ cd $prefix
 
 echo Downloading the Fedora 31 Docker Image
 
-curl -# -L -o fedora.tar.xz https://download.fedoraproject.org/pub/fedora/linux/releases/31/Container/x86_64/images/Fedora-Container-Base-31-1.9.x86_64.tar.xz 
+curl -# -L -o fedora.tar.xz https://download.fedoraproject.org/pub/fedora/linux/releases/32/Container/x86_64/images/Fedora-Container-Base-31-1.9.x86_64.tar.xz 
 
 echo Extracting tarball
 
@@ -98,7 +98,7 @@ umount $prefix/fedora
 
 umount -lf $prefix/fedora 2>/dev/null
 
-echo Fedora 31 Installed! Use enter-fedora to enter the chroot
+echo Fedora Chroot Installed! Use enter-fedora to enter the chroot
 
 echo Use delete-fedora to delete the chroot
 
