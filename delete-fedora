@@ -27,4 +27,4 @@ rm -rf /usr/local/bin/enter-fedora
 rm -rf /usr/local/bin/unmount-fedora
 rm -rf /usr/local/bin/delete-fedora
 
-echo Deleted the Fedora 31 Chroot
+echo Deleted the Fedora Chroot
