@@ -26,13 +26,13 @@ tar xf fedora.tar.xz
 
 echo Removing unnecessary files
 
-rm -rf 1c*
+rm -rf 65*
 
 rm -rf manifest.json
 
 rm -rf repositories
 
-mv ./5b* ./fedora
+mv ./d2* ./fedora
 
 rm -rf fedora.tar.xz
 
